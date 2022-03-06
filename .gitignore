@@ -2,3 +2,6 @@
 .benchmarks
 .pytest_cache
 __pycache__
+scala/target
+scala/project
+
