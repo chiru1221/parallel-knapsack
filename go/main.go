@@ -15,10 +15,16 @@ func parallelUpdate(dp [][]int, weights, values []int, i, weight int, c chan *Re
 	if weight-weights[i] >= 0 {
 		if dp[i+1][weight] < dp[i][weight-weights[i]]+values[i] {
 			result = dp[i][weight-weights[i]] + values[i]
+		} else {
+			result = dp[i+1][weight]
 		}
+	} else {
+		result = dp[i+1][weight]
 	}
-	if dp[i+1][weight] < dp[i][weight] {
+	if result < dp[i][weight] {
 		result = dp[i][weight]
+	} else {
+		result = 0
 	}
 	// // put additional weight for parallel's advantageous
 	time.Sleep(1 * time.Microsecond)
